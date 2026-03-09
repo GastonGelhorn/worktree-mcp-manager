@@ -104,7 +104,7 @@ npm install
 cd mcp-server && npm install && cd ..
 ```
 
-### Option A -- Production build
+### Option A -- Production build (Recommended)
 
 ```bash
 npm run tauri build
@@ -115,7 +115,7 @@ This compiles the Rust CLI, bundles the MCP server, builds the React frontend, a
 After the build completes:
 
 - **App:** `target/release/bundle/macos/Worktree MCP Manager.app` -- drag to `/Applications`
-- **DMG:** `target/release/bundle/dmg/Worktree MCP Manager_0.1.0_aarch64.dmg`
+- **DMG:** `target/release/bundle/dmg/Worktree MCP Manager_0.1.0_aarch64.dmg` (Not used)
 
 The installed app bundles its own MCP server binary at:
 
