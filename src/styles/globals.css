@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── Dark theme (default) ── */
+  :root,
+  [data-theme="dark"] {
+    --surface-0: 5 5 5;
+    --surface-1: 10 10 12;
+    --surface-2: 15 15 18;
+    --surface-3: 22 22 26;
+    --surface-4: 28 28 34;
+    --scrollbar-thumb: rgba(255, 255, 255, 0.08);
+    --scrollbar-thumb-hover: rgba(255, 255, 255, 0.15);
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: rgb(var(--surface-2));
+    color: white;
+    overflow: hidden;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::selection {
+    background-color: rgb(99 102 241 / 0.3);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+
+  /* Radix overlay */
+  [data-radix-popper-content-wrapper] {
+    z-index: 50 !important;
+  }
+}
+
+/*
+ * NOTE: Light theme overrides are NOT in this file.
+ * They are injected at runtime via a <style> tag by src/lib/theme.ts.
+ * This approach guarantees they are always present in the DOM
+ * and always have the correct cascade priority, regardless of
+ * how PostCSS/Tailwind/Vite process this CSS file.
+ */
+
+.glass {
+  background-color: rgba(255, 255, 255, 0.03);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-hover:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #818cf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

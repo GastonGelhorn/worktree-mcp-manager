@@ -1,0 +1,25 @@
+{
+  "name": "mcp-server",
+  "version": "3.0.0",
+  "description": "Worktree MCP Manager server — thin CLI wrapper",
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "bundle": "esbuild index.ts --bundle --platform=node --format=esm --outfile=dist/index.mjs",
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.5",
+    "esbuild": "^0.27.3",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}

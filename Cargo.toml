@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/worktree-core",
+    "crates/worktree-cli",
+    "src-tauri",
+]
+
+[workspace.lints.rust]
+unsafe_code = "forbid"

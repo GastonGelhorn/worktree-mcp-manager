@@ -1,0 +1,74 @@
+pub mod commands;
+pub mod process;
+
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
+pub fn run() {
+    tauri::Builder::default()
+        .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_dialog::init())
+        .invoke_handler(tauri::generate_handler![
+            commands::list_worktrees,
+            commands::add_worktree,
+            commands::remove_worktree,
+            commands::list_branches,
+            commands::herd_link,
+            commands::herd_unlink,
+            commands::start_process,
+            commands::stop_process,
+            commands::generate_pr_url,
+            commands::inject_prompt,
+            commands::inject_claude_context,
+            commands::grab_file,
+            commands::get_changes,
+            commands::stage_files,
+            commands::unstage_files,
+            commands::commit,
+            commands::save_commit_template,
+            commands::pull,
+            commands::push,
+            commands::fetch,
+            commands::merge_branch_into,
+            commands::merge_and_cleanup,
+            commands::get_file_diff_sides,
+            commands::check_framework,
+            commands::get_last_commit,
+            commands::get_ahead_behind,
+            commands::get_branch_graph,
+            commands::scan_repos,
+            commands::git_checkout,
+            commands::git_stash,
+            commands::has_uncommitted_changes,
+            commands::get_current_branch,
+            commands::list_stashes,
+            commands::git_stash_pop,
+            commands::git_stash_drop,
+            commands::delete_branch,
+            commands::get_repo_fingerprint,
+            commands::open_in_cursor,
+            commands::register_mcp_server,
+            commands::setup_all_ides,
+            commands::get_worktree_state,
+            commands::check_branch_integration,
+            commands::merge_with_strategy,
+            commands::merge_dry_run,
+            commands::abort_merge,
+            commands::get_ci_status,
+            commands::predict_conflicts,
+            commands::agent_claim_worktree,
+            commands::agent_release_worktree,
+            commands::agent_list_claims,
+            commands::agent_heartbeat,
+            commands::read_mcp_session_claims,
+            commands::suggest_worktree,
+            commands::analyze_diff,
+            commands::inject_context_v2,
+            commands::discover_hooks,
+            commands::resolve_shortcut,
+            commands::list_workflows,
+            commands::execute_workflow,
+            commands::save_workflow,
+            commands::delete_workflow
+        ])
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
+}

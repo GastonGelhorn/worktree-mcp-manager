@@ -1,0 +1,34 @@
+pub mod error;
+pub mod paths;
+pub mod result;
+pub mod section_inject;
+pub mod safety;
+pub mod git;
+pub mod constants;
+pub mod herd;
+pub mod pr;
+pub mod prompt;
+pub mod claude_context;
+pub mod ide_config;
+pub mod inter_worktree;
+pub mod copier;
+pub mod framework;
+pub mod process;
+pub mod ops;
+pub mod state;
+pub mod integration;
+pub mod shortcuts;
+pub mod merge;
+pub mod ci;
+pub mod agent_orchestration;
+pub mod conflict_prediction;
+pub mod task_router;
+pub mod diff_intelligence;
+pub mod workflows;
+pub mod context_v2;
+pub mod hooks;
+
+pub use error::WorktreeError;
+pub use paths::{RepoPath, WorktreePath};
+pub use result::{OpResult, Warning};
+
