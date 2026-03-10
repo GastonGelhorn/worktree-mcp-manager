@@ -211,6 +211,35 @@ Verify with `claude mcp list`.
 
 Already configured. The root `.mcp.json` declares the server so Claude Code picks it up automatically when you open the project.
 
+### Laravel Herd MCP (separate service)
+
+This project integrates with Laravel Herd (e.g. `herd_link` / `herd_unlink` tools), but **Herd's own MCP server is a separate service**. A "full" Herd MCP integration is typically **per-user/per-machine**, not something this repo can enable by itself.
+
+- **You must install Laravel Herd and enable its MCP server** in your agent of choice (Claude Code and/or Cursor, etc.).
+- **Project code changes are not required** to use Herd MCP; the configuration lives in your IDE/agent MCP settings and points to Herd's `.phar`, usually with `SITE_PATH` set to the project root.
+
+Reference: [Herd docs — AI Integrations](https://herd.laravel.com/docs/macos/advanced-usage/ai-integrations)
+
+**Claude Code**
+
+```bash
+claude mcp add herd php /Applications/Herd.app/Contents/Resources/herd-mcp.phar -e SITE_PATH="$(pwd)"
+```
+
+**Cursor**
+
+Add a new MCP server (Cursor Settings → Tools & Integrations → New MCP Server) using a config like:
+
+```json
+{
+  "herd": {
+    "command": "php",
+    "args": ["/Applications/Herd.app/Contents/Resources/herd-mcp.phar"],
+    "env": { "SITE_PATH": "YOUR-SITE-PATH" }
+  }
+}
+```
+
 ### Other agents
 
 Any MCP-compatible agent can connect to the server over stdio. Point it to:
